@@ -1,4 +1,4 @@
-# тестирование pytest
+# тестирование pytest второй скрипт (чисто копия)
 
 import os
 import subprocess
@@ -30,25 +30,25 @@ def test_case_1():
     print("тест 1")
     cleanup()
     generate_files()
-    subprocess.run(["bash", "script.sh", LOG_DIR, BACKUP_DIR, "90", "5"], check=True)
+    subprocess.run(["bash", "script_2.sh", LOG_DIR, BACKUP_DIR, "90", "5"], check=True)
     assert len(os.listdir(BACKUP_DIR)) == 0  # проверка - нет файлов в BACKUP_DIR
 
 def test_case_2():
     print("тест 2")
     cleanup()
     generate_files()
-    subprocess.run(["bash", "script.sh", LOG_DIR, BACKUP_DIR, "30", "20"], check=True)
+    subprocess.run(["bash", "script_2.sh", LOG_DIR, BACKUP_DIR, "30", "20"], check=True)
     assert (len(os.listdir(BACKUP_DIR)) == 1)and(len(os.listdir(LOG_DIR)) == 0)  # проверка - архив в BACKUP_DIR и пусто в LOG_DIR
 
 def test_case_3():
     print("тест 3")
     cleanup()
     generate_files()
-    subprocess.run(["bash", "script.sh", LOG_DIR, BACKUP_DIR, "30", "12"], check=True)
+    subprocess.run(["bash", "script_2.sh", LOG_DIR, BACKUP_DIR, "30", "12"], check=True)
     assert (len(os.listdir(BACKUP_DIR)) == 1) and (len(os.listdir(LOG_DIR)) == 8)   # проверка - архив в BACKUP_DIR и осталось 8 в LOG_DIR
 
 def test_case_4():
     print("тест 4")
     cleanup()
-    subprocess.run(["bash", "script.sh", LOG_DIR, BACKUP_DIR, "30", "5"], check=True)
+    subprocess.run(["bash", "script_2.sh", LOG_DIR, BACKUP_DIR, "30", "5"], check=True)
     assert len(os.listdir(BACKUP_DIR)) == 0  # проверка - нет файлов в BACKUP_DIR 
