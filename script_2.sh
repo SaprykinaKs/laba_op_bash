@@ -1,5 +1,5 @@
 # тот же скрипт, но сортировка ручками :)
-# bash script_2.sh log backup 30 5
+# bash script_2.sh MyDisk/log backup 30 5
 
 LOG_DIR=$1 # путь к папке
 BACKUP_DIR=$2 # путь к папке бэкапов

@@ -1,6 +1,6 @@
 # тестирование bash
 # bash test_script.sh 
-LOG_DIR="log"
+LOG_DIR="MyDisk/log"
 BACKUP_DIR="backup"
 # SCRIPT_NAME = "script.sh" 
 # SCRIPT_NAME = "script_2.sh" 
@@ -8,11 +8,11 @@ BACKUP_DIR="backup"
 mkdir -p $LOG_DIR
 mkdir -p $BACKUP_DIR
 
-# генерим файлы // 20 файлов по 50М занимают 36% //
+# генерим файлы // 20 файлов по 30М занимают 61% //
 generate_files() {
     echo "генерация файлов"
     for i in {1..20}; do
-        dd if=/dev/zero of="$LOG_DIR/testfile_$i.log" bs=50M count=1
+        dd if=/dev/zero of="$LOG_DIR/testfile_$i.log" bs=30M count=1
         # sleep 0.5 # можно менять параметр, добавлен чтобы норм работала сортировка по времени
         # touch "$LOG_DIR/testfile_$i.log"  
         # echo "создан файл testfile_$i.log" # проверочка

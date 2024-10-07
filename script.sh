@@ -1,4 +1,4 @@
-# bash script.sh log backup 30 5
+# bash script.sh MyDisk/log backup 30 5
 
 LOG_DIR=$1 # путь к папке
 BACKUP_DIR=$2 # путь к папке бэкапов

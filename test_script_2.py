@@ -4,7 +4,7 @@ import os
 import subprocess
 # import pytest 
 
-LOG_DIR = "log"
+LOG_DIR = "MyDisk/log"
 BACKUP_DIR = "backup"
 
 # @pytest.fixture(scope='module', autouse=True)
@@ -18,7 +18,7 @@ def generate_files():
     print("генерация файлов")
     for i in range(1, 21):
         with open(f"{LOG_DIR}/testfile_{i}.log", "wb") as f:
-            f.write(b'\0' * 50 * 1024 * 1024)  # 50MB
+            f.write(b'\0' * 30 * 1024 * 1024)  # 30MB
 
 def cleanup():
     print("очистка")
