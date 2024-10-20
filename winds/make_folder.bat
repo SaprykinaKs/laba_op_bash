@@ -3,7 +3,7 @@
 @echo off
 setlocal
 
-set "IMAGE_SIZE=1G"
+set "IMAGE_SIZE=1024"
 set "IMAGE_NAME=disk_image.vhd"
 set "WORKING_DIR=%cd%"
 
@@ -12,7 +12,7 @@ set "VOLUME_NAME=MyDisk"
 set "MOUNT_POINT=%WORKING_DIR%\%VOLUME_NAME%"
 
 :: виртуальный диск %IMAGE_NAME% размером %IMAGE_SIZE% в директории %WORKING_DIR%
-diskpart /s "%temp%\create_vhd_script.txt" >nul 2>&1
+@REM diskpart /s "%temp%\create_vhd_script.txt" >nul 2>&1
 
 :: текстовый файл с командой для diskpart
 set "diskpart_script=%temp%\create_vhd_script.txt"
@@ -24,21 +24,13 @@ set "diskpart_script=%temp%\create_vhd_script.txt"
     echo assign letter=%VOLUME_NAME%
 ) > "%diskpart_script%"
 
-:: создание виртуального диска
-diskpart /s "%diskpart_script%"
 
-:: проверочка
-if errorlevel 1 (
-    echo ошибка при создании виртуального диска
-    exit /b 1
-)
-
-:: монтируем диск
+:: диск
 diskpart /s "%diskpart_script%" >nul 2>&1
 
 :: проверочка
 if errorlevel 1 (
-    echo ошибка при монтировании виртуального диска
+    echo ошибка при создании виртуального диска
     exit /b 1
 )
 
